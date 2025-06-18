@@ -1,47 +1,20 @@
+# Reveal.js Template for Students
 
-# Reveal.js Presentation Template
-
-This repository provides a minimal and clean setup for creating Reveal.js presentations using:
-
-- Markdown (`slides.md`)
-- LaTeX math (via MathJax)
-- Live preview in the browser
-- Custom themes and vertical slides
-
-No need for Keynote — this works on any platform using free, open-source tools.
+This repository provides a ready-to-use template for writing slides in Markdown using [Reveal.js](https://revealjs.com/) and hosting them via GitHub Pages.
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-### 1. Clone the repository
+### 1. Install Node.js and npm
 
-```bash
-git clone git@github.com:arampatzis/reveal-template.git
-cd reveal-template
-```
+You need Node.js (which includes npm) installed on your system.
 
-Make sure you have Git and Node.js installed. Use SSH to avoid authentication issues.
+#### Windows / macOS / Linux:
+- Visit: https://nodejs.org/
+- Download the **LTS** version and install it
 
----
-
-### 2. Install Node.js and npm
-
-Follow the official instructions based on your operating system:
-
-- **Windows & macOS**: Download from [https://nodejs.org](https://nodejs.org)
-- **Linux (Debian/Ubuntu)**:
-  ```bash
-  sudo apt update
-  sudo apt install nodejs npm
-  ```
-- **Linux (Arch/Manjaro)**:
-  ```bash
-  sudo pacman -S nodejs npm
-  ```
-
-After installation, confirm with:
-
+To verify:
 ```bash
 node -v
 npm -v
@@ -49,109 +22,160 @@ npm -v
 
 ---
 
-### 3. Install project dependencies
+### 2. Get the Template
+
+**Do not clone this repository.**  
+Instead:
+
+1. Visit: https://github.com/arampatzis/reveal-template
+2. Click **Code → Download ZIP**
+3. Extract it on your computer
+4. Rename the folder as you wish
+
+---
+
+### 3. Install Required Packages
+
+Inside the extracted folder, open a terminal and run:
 
 ```bash
 npm install
 ```
 
-This sets up everything needed to run Reveal.js locally.
+This installs local development tools like the server (`gulp`).
 
 ---
 
-### 4. Start the presentation
+### 4. Run the Presentation Locally
 
 ```bash
 npm start
 ```
 
-Then open your browser and go to:
-
+Open your browser at:
 ```
-http://localhost:3000
+http://localhost:8000
 ```
 
-Slides will live-reload whenever you save changes to `slides.md`.
+You should see your slides rendered.
 
 ---
 
-## Writing Slides
+## 📝 Editing Your Slides
 
-Edit the file `slides.md`. Use Markdown syntax and LaTeX for math support.
+Slides are written in `slides.md` using Markdown.
 
-### Example:
+Use `---` to separate horizontal slides, and `--` for vertical slides:
 
 ```markdown
 # Welcome
 
-This is my presentation.
-
 ---
 
-# Math
+## Slide 1
 
-Einstein's formula: $E = mc^2$
-
----
-
-# Vertical Slides
-
-Slide 1
+Some text
 
 --
-Slide 1.1
+
+- Vertical slide 1
 
 --
-Slide 1.2
 
----
-
-# The End
+- Vertical slide 2
 ```
 
 ---
 
-## Changing Themes
+## 🎨 Customizing Theme
 
-To change the visual style, edit this line in `index.html`:
+Reveal.js themes are in the `dist/theme` folder.
+
+To change the theme, edit `index.html` and modify this line:
 
 ```html
-<link rel="stylesheet" href="dist/theme/moon.css" id="theme">
+<link rel="stylesheet" href="dist/theme/black.css" id="theme">
 ```
 
-Available themes: `black`, `white`, `league`, `moon`, `night`, `solarized`, and others.
+Try other themes like `white.css`, `night.css`, `moon.css`, etc.
 
 ---
 
-## Tips
+## 🌐 Hosting Slides on GitHub Pages
 
-- Use `---` for horizontal slides, `--` for vertical slides.
-- Add speaker notes using `Note:` followed by your comment.
-- Use `$$ ... $$` for block equations and `$...$` for inline math.
-- Press `S` during the presentation to view speaker notes in presenter mode.
+You can publish your presentation online for free using GitHub Pages.
 
----
+### Step-by-step:
 
-## For Students
+1. Make sure your repository includes:
+   - `index.html`
+   - `slides.md`
+   - `dist/` and `plugin/` folders from Reveal.js
+   - empty `.nojekyll` file (prevents GitHub from using Jekyll)
 
-To start your own presentation:
+2. Go to your GitHub repository → **Settings** → **Pages**
 
-1. Go to the GitHub repository page: https://github.com/arampatzis/reveal-template
-2. Click the green **"Code"** button, then choose **"Download ZIP"**
-3. Extract the ZIP file to a folder on your computer
-4. Open the folder in your terminal or code editor
-5. Run:
-   ```bash
-   npm install
-   npm start
+3. Under **Build and deployment**, set:
+   - **Source**: `Deploy from a branch`
+   - **Branch**: `main`
+   - **Folder**: `/ (root)`
+   - Click **Save**
+
+4. Wait 1–10 minutes. GitHub will show a green message:
    ```
-6. Open `http://localhost:8000` in your browser
-7. Start editing `slides.md` to build your presentation
+   Your site is live at https://<your-username>.github.io/<repo-name>/
+   ```
+
+5. If the green message does not appear:
+   - Add a `.nojekyll` file (empty file with that name)
+   - Make a small commit to trigger a rebuild:
+     ```bash
+     git commit --allow-empty -m "Trigger rebuild"
+     git push
+     ```
+
+6. Visit your live slides in the browser!
+
+This allows you and your students to share presentations with a link.
 
 ---
 
-## Requirements
+## 🔒 Public vs Private Repos and Ways to Share Slides
 
-- Git
-- Node.js and npm (see installation section above)
-- Modern browser (Chrome, Firefox, Safari)
+### ✅ Option 1: GitHub Pages (Public Repo)
+- If your repository is **public**, GitHub Pages will host your presentation at:
+  ```
+  https://<your-username>.github.io/<repo-name>/
+  ```
+- This is the easiest and recommended way to publish Reveal.js slides.
+
+### 🚫 Option 2: GitHub Pages (Private Repo)
+- GitHub Pages **does not** work for private repos unless you are on a **GitHub Enterprise** plan.
+- You will see a 404 or the site won’t build.
+
+### 🛠 Option 3: Local Server (for Private Sharing)
+- You can run your slides locally with:
+  ```bash
+  npm start
+  ```
+- Then access them at:
+  ```
+  http://localhost:8000/
+  ```
+- This works for development or sharing over a local network.
+
+### 📤 Option 4: Export to PDF
+- Reveal.js can export slides to PDF:
+  ```bash
+  npm install -g decktape
+  decktape reveal http://localhost:8000 slides.pdf
+  ```
+- Useful for email, offline viewing, or submissions.
+
+### 🧪 Option 5: Self-host on your own server
+- Upload your site to any static host (e.g. Netlify, Vercel, your own Apache/Nginx server).
+- Make sure the folder has:
+  - `index.html`
+  - All assets (`dist/`, `plugin/`, etc.)
+
+These options allow flexibility depending on your privacy needs.
