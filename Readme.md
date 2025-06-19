@@ -1,6 +1,15 @@
-# Reveal.js Template for Students
+# Reveal.js template
 
-This repository provides a ready-to-use template for writing slides in Markdown using [Reveal.js](https://revealjs.com/) and hosting them via GitHub Pages.
+This repository provides a ready-to-use template for writing slides in Markdown using 
+[Reveal.js](https://revealjs.com/) and hosting them via GitHub Pages or by running
+a local server.
+
+Reveal.js is an open-source framework for creating HTML-based presentations using 
+Markdown or HTML.
+Instead of writing slides in a visual editor (like Keynote or PowerPoint), you write 
+them in plain text — and Reveal.js turns them into a modern, interactive slideshow in 
+the browser.
+
 
 ---
 
@@ -179,3 +188,50 @@ This allows you and your students to share presentations with a link.
   - All assets (`dist/`, `plugin/`, etc.)
 
 These options allow flexibility depending on your privacy needs.
+
+
+## 📦 Managing Large Files with Git LFS
+
+If you need to include large binary files in your presentation (e.g. `.mp4` videos, `.pdf` documents), it is recommended to use **Git Large File Storage (LFS)** instead of committing them directly to the repository.
+
+### ✅ Install Git LFS
+
+- **macOS:**  
+  `brew install git-lfs`
+
+- **Ubuntu/Debian:**  
+  `sudo apt install git-lfs`
+
+- **Windows:**  
+  Download and install from [git-lfs.com](https://git-lfs.com)
+
+### ✅ Set Up Git LFS in Your Repo
+
+1. Run this once (per machine):
+   ```bash
+   git lfs install
+   ```
+
+2. Track the file types you want to store with LFS:
+   ```bash
+   git lfs track "*.mp4"
+   git lfs track "*.pdf"
+   ```
+
+3. Add and commit:
+   ```bash
+   git add .gitattributes
+   git add media/my-video.mp4
+   git commit -m "Add video using Git LFS"
+   git push
+   ```
+
+### ℹ️ Notes
+
+- GitHub’s free LFS plan includes **1 GB of storage** and **1 GB/month bandwidth**.
+- You can view tracked LFS files using:
+  ```bash
+  git lfs ls-files
+  ```
+
+To avoid LFS entirely, you can also upload media externally (e.g. Google Drive or a web server) and link to them in your slides.
