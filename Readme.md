@@ -181,12 +181,6 @@ This allows you and your students to share presentations with a link.
   ```
 - Useful for email, offline viewing, or submissions.
 
-### 🧪 Option 5: Self-host on your own server
-- Upload your site to any static host (e.g. Netlify, Vercel, your own Apache/Nginx server).
-- Make sure the folder has:
-  - `index.html`
-  - All assets (`dist/`, `plugin/`, etc.)
-
 These options allow flexibility depending on your privacy needs.
 
 
