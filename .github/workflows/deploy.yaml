@@ -14,13 +14,20 @@ jobs:
         with:
           lfs: true
 
-      - name: Git LFS Pull
+      - name: Pull LFS content
         run: |
           git lfs install
           git lfs pull
+
+      - name: Create clean publish dir
+        run: |
+          mkdir public
+          shopt -s extglob
+          cp -r !(public|.git|.github) public/
+          cp -r .nojekyll public/ || true
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./public
