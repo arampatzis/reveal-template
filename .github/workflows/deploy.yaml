@@ -21,9 +21,10 @@ jobs:
 
       - name: Create clean publish dir
         run: |
-          mkdir public
-          shopt -s dotglob nullglob
-          cp -r ./* public/
+            mkdir public
+            shopt -s dotglob extglob nullglob
+            cp -r !(public) public/
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
