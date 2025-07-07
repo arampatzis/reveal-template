@@ -22,9 +22,8 @@ jobs:
       - name: Create clean publish dir
         run: |
           mkdir public
-          shopt -s extglob
-          cp -r !(public|.git|.github) public/
-          cp -r .nojekyll public/ || true
+          shopt -s dotglob nullglob
+          cp -r ./* public/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
