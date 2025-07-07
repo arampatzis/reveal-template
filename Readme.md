@@ -11,8 +11,6 @@ them in plain text — and Reveal.js turns them into a modern, interactive slide
 the browser.
 
 
----
-
 ## 🚀 Getting Started
 
 ### 1. Install Node.js and npm
@@ -29,8 +27,6 @@ node -v
 npm -v
 ```
 
----
-
 ### 2. Get the Template
 
 **Do not clone this repository.**  
@@ -40,8 +36,6 @@ Instead:
 2. Click **Code → Download ZIP**
 3. Extract it on your computer
 4. Rename the folder as you wish
-
----
 
 ### 3. Install Required Packages
 
@@ -53,7 +47,6 @@ npm install
 
 This installs local development tools like the server (`gulp`).
 
----
 
 ### 4. Run the Presentation Locally
 
@@ -68,7 +61,6 @@ http://localhost:8000
 
 You should see your slides rendered.
 
----
 
 ## 📝 Editing Your Slides
 
@@ -94,7 +86,6 @@ Some text
 - Vertical slide 2
 ```
 
----
 
 ## 🎨 Customizing Theme
 
@@ -108,46 +99,37 @@ To change the theme, edit `index.html` and modify this line:
 
 Try other themes like `white.css`, `night.css`, `moon.css`, etc.
 
----
 
-## 🌐 Hosting Slides on GitHub Pages
+## 🚀 Deployment to GitHub Pages
 
-You can publish your presentation online for free using GitHub Pages.
+This project uses **GitHub Actions** to automatically deploy the Reveal.js slides —
+including `.mp4` videos tracked with **Git LFS** — to GitHub Pages.
 
-### Step-by-step:
+### 🛠️ Deployment Workflow
 
-1. Make sure your repository includes:
-   - `index.html`
-   - `slides.md`
-   - `dist/` and `plugin/` folders from Reveal.js
-   - empty `.nojekyll` file (prevents GitHub from using Jekyll)
+GitHub Actions runs automatically on every push to the `main` branch.
+It performs the following steps:
 
-2. Go to your GitHub repository → **Settings** → **Pages**
+1. Checks out the repo with Git LFS support
+2. Pulls all Git LFS content (e.g., `.mp4` files)
+3. Copies the site contents (including videos) to a `public/` folder
+4. Publishes the `public/` folder to the `gh-pages` branch via [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
 
-3. Under **Build and deployment**, set:
-   - **Source**: `Deploy from a branch`
-   - **Branch**: `main`
-   - **Folder**: `/ (root)`
-   - Click **Save**
 
-4. Wait 1–10 minutes. GitHub will show a green message:
-   ```
-   Your site is live at https://<your-username>.github.io/<repo-name>/
-   ```
+### ✅ Enable GitHub Pages
 
-5. If the green message does not appear:
-   - Add a `.nojekyll` file (empty file with that name)
-   - Make a small commit to trigger a rebuild:
-     ```bash
-     git commit --allow-empty -m "Trigger rebuild"
-     git push
-     ```
+After you push your slides and the workflow was successful, a branch called `gh-pages` 
+will be created. Follow these steps to enable GitHub Pages:
 
-6. Visit your live slides in the browser!
+- GitHub Pages must be enabled:
+  - Go to **Settings → Pages**
+  - Set **Source** to: `gh-pages` branch, `/ (root)`
+- Your `.mp4` files should be downloaded via Git LFS during the workflow
+
+
 
 This allows you and your students to share presentations with a link.
 
----
 
 ## 🔒 Public vs Private Repos and Ways to Share Slides
 
